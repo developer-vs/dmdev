@@ -7,8 +7,7 @@ public class ThreeVariables {
 	public static void main(String[] args) {
 
 		/**
-		 * Даны 3 переменные:
-		 * 
+		 * Даны 3 переменные: 
 		 * - operand1 (double) - operand2 (double) - operation (char ‘+’, ‘-’, ‘*’, ‘/’, ‘%’)
 		 * 
 		 * Написать функцию, которая принимает в качестве параметров эти три переменные
@@ -27,44 +26,38 @@ public class ThreeVariables {
 		double operand2 = scanner.nextDouble();
 		
 		System.out.print("Input your operation (+, -, *, /, %): ");
-		char operation = scanner.next().charAt(0);
-		
-		// Get ASCII number
-//		System.out.println((int)operation);
+		String operation = scanner.next();
 
 		scanner.close();
 
-		doCalculation(operand1, operand2, operation);
+		double result = doCalculation(operand1, operand2, operation);
+		System.out.println("Result: " + result + " (" + 
+				String.valueOf(operand1) + " " + 
+				operation + " " + 
+				String.valueOf(operand2) + ")");
 	}
 	
-	public static void doCalculation(double operand1, double operand2, char operation) {
+	public static double doCalculation(double operand1, double operand2, String operation) {
+		double result = 0;
 		switch(operation) {
-			case 37:
-				System.out.println(operand1 % operand2 + " (" + 
-						String.valueOf(operand1) + " % " + 
-						String.valueOf(operand2) + ")");
+			case "%":
+				result = operand1 % operand2;
 				break;
-			case 42:
-				System.out.println(operand1 * operand2 + " (" + 
-						String.valueOf(operand1) + " * " + 
-						String.valueOf(operand2) + ")");
+			case "*":
+				result = operand1 * operand2;
 				break;
-			case 43:
-				System.out.println(operand1 + operand2 + " (" + 
-						String.valueOf(operand1) + " + " + 
-						String.valueOf(operand2) + ")");
+			case "+":
+				result = operand1 + operand2;
 				break;
-			case 45:
-				System.out.println(operand1 - operand2 + " (" + 
-						String.valueOf(operand1) + " - " + 
-						String.valueOf(operand2) + ")");
+			case "-":
+				result = operand1 - operand2;
 				break;
-			case 47:
-				System.out.println(operand1 / operand2 + " (" + 
-						String.valueOf(operand1) + " / " + 
-						String.valueOf(operand2) + ")");
+			case "/":
+				result = operand1 / operand2;
 				break;
+			default:
+				System.out.println("Please input a valid operator!");
 		}
+		return result;
 	}
-
 }
