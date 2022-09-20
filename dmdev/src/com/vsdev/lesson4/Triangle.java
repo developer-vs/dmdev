@@ -37,8 +37,8 @@ public class Triangle {
 		
 		scanner.close();
 		
-		double areaOfFirstTriangle = getAreaOfTriangle(firstTriangleSideA, firstTriangleSideB);
-		double areaOfSecondTriangle = getAreaOfTriangle(secondTriangleSideA, secondTriangleSideB);
+		double areaOfFirstTriangle = findAreaOfTriangle(firstTriangleSideA, firstTriangleSideB);
+		double areaOfSecondTriangle = findAreaOfTriangle(secondTriangleSideA, secondTriangleSideB);
 		
 		System.out.println();
 		
@@ -47,14 +47,14 @@ public class Triangle {
 		compareTwoTriangles(areaOfFirstTriangle, areaOfSecondTriangle);
 	}
 	
-	public static double getAreaOfTriangle(int sideA, int sideB) {
+	public static double findAreaOfTriangle(int sideA, int sideB) {
 		return 1/2.0 * (sideA * sideB);
 	}
 	
-	public static void compareTwoTriangles(double AreaOfTriangle1, double AreaOfTriangle2) {
-		if(AreaOfTriangle1 > AreaOfTriangle2) {
+	public static void compareTwoTriangles(double areaOfTriangle1, double areaOfTriangle2) {
+		if(areaOfTriangle1 > areaOfTriangle2) {
 			System.out.println("The area of a first triangle is greater than the area of the second one.");
-		} else if(AreaOfTriangle1 < AreaOfTriangle2) {
+		} else if(areaOfTriangle1 < areaOfTriangle2) {
 			System.out.println("The area of a first triangle is less than the area of the second one.");
 		} else {
 			System.out.println("The area of a first triangle is equal to the area of the second one.");
