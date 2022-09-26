@@ -18,51 +18,47 @@ public class JuniorJavaDeveloperSalary {
 	 * Для интереса: попробовать увеличить процент, которые Ваня инвестирует из
 	 * своей зарплаты
 	 */
-
+	private static DecimalFormat df = new DecimalFormat("0.00");
+	private static int amountOfMonth = 12 * 3 + 2;	
+	private static int salaryPerMonth = 600;
+	private static int salaryIncrease = 400;
+	private static int totalSalary = 0;		
+	private static int entertainment = 300;	
+	private static int amountOfMoneyInvested = 0;			
+	private static double investmentPercentage = 0.1;	
+	private static double brokerageAccount = 0;
+	private static double dividends = 0;
+	private static double dividendsReceived = 0;
+	private static double amountOfMoneyToInvest = 0;
+	private static double brokeragePercent = 0.2;
+	
 	public static void main(String[] args) {		
 		calculateIncome();
 	}
 	
-	public static void calculateIncome() {
-		DecimalFormat df = new DecimalFormat("0.00");
-		int totalSalary = 0;	
-		int salaryPerMonth = 600;
-		int salaryIncrease = 400;
-		int entertainment = 300;	
-		int amountOfMoneyInvested = 0;
-		int amountOfMonth = 12 * 3 + 2;		
-		double investmentPercentage = 0.1;	
-		double brokerageAccount = 0;
-		double dividends = 0;
-		double dividendsReceived = 0;
-		double amountOfMoneyToInvest = 0;
-		double brokeragePercent = 0.2;
-		
+	public static void calculateIncome() {				
 		for(int i = 1; i <= amountOfMonth; i++) {				
-			if(i % 6 == 0) {
+			if(i % 7 == 0) {
 				salaryPerMonth += salaryIncrease;
-				totalSalary += salaryPerMonth;
-				amountOfMoneyToInvest = salaryPerMonth * investmentPercentage;
-				amountOfMoneyInvested += amountOfMoneyToInvest;
-				brokerageAccount += amountOfMoneyToInvest;				
-				dividends = brokerageAccount * brokeragePercent;
-				dividendsReceived += dividends;
-				brokerageAccount += dividends;
-				totalSalary -= (amountOfMoneyToInvest + entertainment);
+				calculateIncomeLogic();
 				continue;
 			}			
-			totalSalary += salaryPerMonth;
-			amountOfMoneyToInvest = salaryPerMonth * investmentPercentage;
-			amountOfMoneyInvested += amountOfMoneyToInvest;
-			brokerageAccount += amountOfMoneyToInvest;
-			dividends = brokerageAccount * brokeragePercent;
-			dividendsReceived += dividends;
-			brokerageAccount += dividends;
-			totalSalary -= (amountOfMoneyToInvest + entertainment);
+			calculateIncomeLogic();
 		}
 		System.out.println("Amount of money in a bank account: " + totalSalary);
 		System.out.println("Amount of money in a brokerage account: " + df.format(brokerageAccount));
 		System.out.println("The total amount of money transferred to a brokerage account: " + amountOfMoneyInvested);
 		System.out.println("Dividends received: " + df.format(dividendsReceived));
+	}
+	
+	public static void calculateIncomeLogic() {		
+		totalSalary += salaryPerMonth;
+		amountOfMoneyToInvest = salaryPerMonth * investmentPercentage;
+		amountOfMoneyInvested += amountOfMoneyToInvest;
+		brokerageAccount += amountOfMoneyToInvest;
+		dividends = brokerageAccount * brokeragePercent;
+		dividendsReceived += dividends;
+		brokerageAccount += dividends;
+		totalSalary -= (amountOfMoneyToInvest + entertainment);
 	}
 }

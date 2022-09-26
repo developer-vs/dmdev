@@ -24,15 +24,11 @@ public class FlipNumber {
 	}
 	
 	public static int flipTheNumber(int num) {
-		int lastDigit = 0;
-		int currentNumber = num;
-		String numberAsString = "";
-		while(currentNumber != 0) {
-			lastDigit = currentNumber % 10;
-			currentNumber /= 10;
-			if(lastDigit % 2 == 0) { }
-			numberAsString += lastDigit;
+		int reverseNumber = 0;		
+		while(num != 0) {
+			reverseNumber = reverseNumber * 10 + num % 10;
+			num /= 10;			
 		}
-		return Integer.valueOf(numberAsString);
+		return reverseNumber;
 	}
 }
