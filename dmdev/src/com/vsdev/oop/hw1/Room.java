@@ -2,21 +2,24 @@ package com.vsdev.oop.hw1;
 
 public class Room {
 
-	private boolean isThroughPass;
+	private boolean isWalkThrough;
 
-	public Room(boolean isThroughPass) {
-		this.isThroughPass = isThroughPass;
+	public Room() {
+	}
+
+	public Room(boolean isWalkThrough) {
+		this.isWalkThrough = isWalkThrough;
 	}
 
 	public boolean getRoomState() {
-		return isThroughPass;
-	}
-
-	public void setRoomState(boolean isThroughPass) {
-		this.isThroughPass = isThroughPass;
+		return isWalkThrough;
 	}
 
 	public void print() {
-		System.out.println("Is room through pass: " + isThroughPass);
+		if (isWalkThrough) {
+			System.out.println("      One room is a walk-through.");
+		} else {
+			System.out.println("      One room is not a walk-through.");
+		}
 	}
 }

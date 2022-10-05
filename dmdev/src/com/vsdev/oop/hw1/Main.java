@@ -4,36 +4,31 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		Room[] rooms = new Room[3];
-		for (int i = 0; i < rooms.length; i++) {
-			if (i % 2 == 0) {
-				rooms[i] = new Room(true);
-			} else {
-				rooms[i] = new Room(false);
-			}
-		}
+		Flat flat1 = new Flat(1, new Room[] { new Room(true), new Room(false) });
+		Flat flat2 = new Flat(2, new Room[] { new Room(true), new Room(false) });
+		Flat flat3 = new Flat(3, new Room[] { new Room(true), new Room(true), new Room(false) });
+		Flat flat4 = new Flat(4, new Room[] { new Room(true), new Room(true), new Room(false) });
 
-		Flat[] flats = new Flat[4];
-		for (int i = 0; i < flats.length; i++) {
-			flats[i] = new Flat(i, rooms);
-		}
+		Floor floor1 = new Floor(1, new Flat[] { flat1, flat2, flat3, flat4 });
+		Floor floor2 = new Floor(2, new Flat[] { flat1, flat2, flat3, flat4 });
+		Floor floor3 = new Floor(3, new Flat[] { flat1, flat2, flat3, flat4 });
 
-		Floor[] floors = new Floor[5];
-		for (int i = 0; i < floors.length; i++) {
-			floors[i] = new Floor(i, flats);
-		}
+		House house1 = new House(1, new Floor[] { floor1, floor2, floor3 });
+		House house2 = new House(2, new Floor[] { floor1, floor2 });
 
-		House[] house = new House[2];
-		for(int i = 0; i < house.length; i++) {
-			house[i] = new House(i, floors);
-		}
-		
-		printAllInformation(house);
+		printAllInformation(house1);
 	}
 
-	public static void printAllInformation(House[] house) {
-		for(int i = 0; i < house.length; i++) {
-			house[i].print();
+	public static void printAllInformation(House house) {
+		house.print();
+		for (Floor floor : house.getFloors()) {
+			floor.print();
+			for (Flat flat : floor.getFlats()) {
+				flat.print();
+				for (Room room : flat.getRooms()) {
+					room.print();
+				}
+			}
 		}
 	}
 }

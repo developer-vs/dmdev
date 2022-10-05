@@ -5,35 +5,23 @@ public class Floor {
 	private Flat[] flats;
 	private int number;
 
-	public Floor() {}
+	public Floor() {
+	}
 
-	public Floor(int floorNumber, Flat[] flat) {
+	public Floor(int floorNumber, Flat[] flats) {
 		number = floorNumber;
-		flats = flat;
+		this.flats = flats;
 	}
 
 	public int getFloorNumber() {
 		return number;
 	}
 
-	public void setFloorNumber(int floorNumber) {
-		this.number = floorNumber;
-	}
-
-	public Flat[] getFlat() {
+	public Flat[] getFlats() {
 		return flats;
 	}
 
-	public void setFlat(Flat[] flat) {
-		flats = flat;
-	}
-	
-	public int calculateFlats() {
-		return flats.length;
-	}
-
 	public void print() {
-		System.out.println("Floor number: " + number);
-		
+		System.out.println("  Floor number: " + number + ", contains: " + flats.length + " flat(s).");
 	}
 }
