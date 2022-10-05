@@ -2,24 +2,36 @@ package com.vsdev.oop.hw1;
 
 public class Flat {
 
-	private int flatNumber;
-	private int[] numberOfRooms;
+	private Room[] rooms;
+	private int number;
+	
+	public Flat() {}
 
-	public Flat(int flatNumber, int numberOfRooms) {
-		this.flatNumber = flatNumber;
-		this.numberOfRooms = new int[numberOfRooms];
+	public Flat(int flatNumber, Room[] rooms) {
+		number = flatNumber;
+		this.rooms = rooms;
 	}
 
 	public int getFlatNumber() {
-		return flatNumber;
+		return number;
 	}
 
 	public void setFlatNumber(int flatNumber) {
-		this.flatNumber = flatNumber;
+		this.number = flatNumber;
+	}
+
+	public Room[] getRooms() {
+		return rooms;
+	}
+
+	public void setRooms(Room[] rooms) {
+		this.rooms = rooms;
 	}
 
 	public void print() {
-		System.out.println("Flat number: " + flatNumber + ", number of rooms: " + numberOfRooms.length);
+		System.out.println("Flat number: " + number);
+		for(int i = 0; i < rooms.length; i ++) {
+			rooms[i].print();
+		}
 	}
-
 }

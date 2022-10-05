@@ -19,5 +19,4 @@ public class Room {
 	public void print() {
 		System.out.println("Is room through pass: " + isThroughPass);
 	}
-
 }

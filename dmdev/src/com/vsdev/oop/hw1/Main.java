@@ -4,10 +4,36 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		Room room = new Room(true);
-		Flat flat = new Flat(2, 3);
-		Floor floor = new Floor(1, 4);
-		House house = new House(77, 9, floor, flat, room);
-		house.printAllInformation(house);
+		Room[] rooms = new Room[3];
+		for (int i = 0; i < rooms.length; i++) {
+			if (i % 2 == 0) {
+				rooms[i] = new Room(true);
+			} else {
+				rooms[i] = new Room(false);
+			}
+		}
+
+		Flat[] flats = new Flat[4];
+		for (int i = 0; i < flats.length; i++) {
+			flats[i] = new Flat(i, rooms);
+		}
+
+		Floor[] floors = new Floor[5];
+		for (int i = 0; i < floors.length; i++) {
+			floors[i] = new Floor(i, flats);
+		}
+
+		House[] house = new House[2];
+		for(int i = 0; i < house.length; i++) {
+			house[i] = new House(i, floors);
+		}
+		
+		printAllInformation(house);
+	}
+
+	public static void printAllInformation(House[] house) {
+		for(int i = 0; i < house.length; i++) {
+			house[i].print();
+		}
 	}
 }
